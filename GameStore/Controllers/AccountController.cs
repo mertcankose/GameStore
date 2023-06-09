@@ -1,37 +1,31 @@
 ﻿using GameStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public UserContext userContext;
 
-        public AccountController(ILogger<HomeController> logger)
+        public AccountController(UserContext userContext)
         {
-            _logger = logger;
+            this.userContext = userContext;
         }
 
-        public IActionResult Index()
+        /*
+        public async Task<IActionResult> Index(long id = 1)
         {
-            return View();
+            return View(await userContext.Users.FindAsync(id));
+        }
+        */
+
+        // return all users
+        public async Task<IActionResult> Index()
+        {
+            return View(await userContext.Users.ToListAsync());
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+ 
     }
 }

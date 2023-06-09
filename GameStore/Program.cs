@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddResponseCaching();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); // to enable support for views
 
 builder.Services.AddDbContext<UserContext>(opts =>
 {
@@ -87,6 +87,7 @@ app.UseRouting();
 app.UseMiddleware<TestMiddleware>();
 app.UseAuthorization();
 
+app.MapDefaultControllerRoute();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

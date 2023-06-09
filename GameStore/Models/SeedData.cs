@@ -6,22 +6,24 @@ namespace GameStore.Models
     {
 
 
-        public static void SeedDatabase(UserContext context)
+        public static void SeedDatabase(UserContext userContext)
         {
-            context.Database.Migrate();
+            userContext.Database.Migrate();
 
-            if (context.Users.Count() == 0)
+            if (userContext.Users.Count() == 0)
             {
-                User user = new User
-                {
-                    Username = "admin",
-                    Password = "1230,aaa",
-                    Email = "admin@admin.com",
-                    FirstName = "Admin",
-                    LastName = "Admin"
-                };
+                userContext.Users.AddRange(
+                    new User
+                    {
+                        Username = "admin",
+                        Password = "1230,aaa",
+                        Email = "admin@admin.com",
+                        FirstName = "Admin",
+                        LastName = "Admin"
+                    }
+                  );
             }
-            context.SaveChanges();
+            userContext.SaveChanges();
         }
 
 

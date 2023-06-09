@@ -1,5 +1,8 @@
+using GameStore.Extensions;
+using GameStore.Middlewares;
 using GameStore.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +16,57 @@ builder.Services.AddDbContext<UserContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 
+builder.Services.AddControllers();
+
 
 var app = builder.Build();
 
+app.MapControllers();
 
-var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<UserContext>();
-SeedData.SeedDatabase(context);
+/*
+const string BASEURL = "api/users";
+
+app.MapGet($"{BASEURL}/{{id}}", async (HttpContext httpContext, UserContext userContext) =>
+{
+    string? id = httpContext.Request.RouteValues["id"] as string;
+    if (id != null)
+    {
+        User? user = userContext.Users.Find(long.Parse(id));
+        if(user == null)
+        {
+            httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+        } else
+        {
+            httpContext.Response.ContentType = "application/json";
+            await httpContext.Response.WriteAsync(JsonSerializer.Serialize<User>(user));
+        }
+    }
+});
+
+app.MapGet(BASEURL, async (HttpContext httpContext, UserContext userContext) =>
+{
+    httpContext.Response.ContentType = "application/json";
+    await httpContext.Response.WriteAsync(JsonSerializer.Serialize<IEnumerable<User>>(userContext.Users));
+});
+
+app.MapPost(BASEURL, async (HttpContext httpContext, UserContext userContext) =>
+{
+    User? user = await JsonSerializer.DeserializeAsync<User>(httpContext.Request.Body);
+
+    if(user!=null)
+    {
+        await userContext.AddAsync(user);
+        await userContext.SaveChangesAsync();
+        httpContext.Response.StatusCode = StatusCodes.Status200OK;
+    }
+});
+
+
+*/
+
+var userContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<UserContext>();
+SeedData.SeedDatabase(userContext);
+
 
 app.UseResponseCaching();
 
@@ -35,6 +83,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//app.UseTest();
+app.UseMiddleware<TestMiddleware>();
 app.UseAuthorization();
 
 app.MapControllerRoute(

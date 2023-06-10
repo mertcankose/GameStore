@@ -1,7 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Register Page";
+﻿@model GameStore.Models.User;
+
+@{
+    ViewData["Title"] = "Register";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Register</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center mt-4">
+                <h6 class="bg-primary text-white p-2">Register</h6>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <form method="post" action="Register">
+                        <div class="form-group">
+                            <label asp-for="Username">Username</label>
+                            <input asp-for="Username" type="text" class="form-control" id="Username" name="Username" required>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label asp-for="FirstName">First Name</label>
+                            <input asp-for="FirstName" type="text" class="form-control" id="FirstName" name="FirstName" required>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label asp-for="LastName">Last Name</label>
+                            <input asp-for="LastName" type="text" class="form-control" id="LastName" name="LastName" required>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="Email" name="Email" required>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label asp-for="Password">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="Password" name="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Register</button>
+                        <div class="text-center mt-4">
+                            <p>Already have an account? <a asp-controller="Account" asp-action="Login">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,33 +1,32 @@
-﻿@model List<GameStore.Models.User>
+﻿@model GameStore.Models.User;
 
 @{
     ViewData["Title"] = "Profile Page";
 }
 
 <div class="text-center">
-   <h6 class="bg-primary text-white text-center m-2 p-2">Users Table</h6>
+   <h6 class="bg-primary text-white text-center m-2 p-2">Profile</h6>
    <div class="m-2">
         <table class="table table-sm table-striped table-bordered">
-            @foreach (var user in Model) {
                 <tbody>
                     <tr>
                         <th>User Name</th>
-                        <td>@user.Username</td>
+                        <td>@Model.Username</td>
                     </tr>
                     <tr>
                         <th>First Name</th>
-                        <td>@user.FirstName</td>
+                        <td>@Model.FirstName</td>
                     </tr>
                     <tr>
                         <th>Last Name</th>
-                        <td>@user.LastName</td>
+                        <td>@Model.LastName</td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td>@user.Email</td>
+                        <td>@Model.Email</td>
                     </tr>
                 </tbody>
-        }
+        
         </table>
    </div>
 </div>

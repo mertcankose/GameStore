@@ -17,6 +17,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\icons\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\icons\ans.svg" />
+    <Content Remove="wwwroot\icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\icons\ans.svg" />
+  </ItemGroup>
 </Project>

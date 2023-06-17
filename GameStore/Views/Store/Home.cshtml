@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Store Home";
+}
+
+<div class="container">
+    <h3 class="text-center">Store Home</h3>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.pngall.com/wp-content/uploads/8/Sample-PNG-Image.png" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="card-text">Price: $@product.Price</p>
+                        <a href="/Product/Details/@product.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

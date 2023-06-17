@@ -1,0 +1,25 @@
+﻿@model GameStore.Models.Product
+
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+<div class="container">
+    <h3 class="text-center">Product Detail</h3>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <img src="https://www.pngall.com/wp-content/uploads/8/Sample-PNG-Image.png" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text">@Model.Description</p>
+                    <p class="card-text">Price: $@Model.Price</p>
+                    <form action="/Cart/AddToCart" method="post">
+                        <input type="hidden" name="productId" value="@Model.Id" />
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

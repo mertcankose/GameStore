@@ -16,6 +16,13 @@ builder.Services.AddDbContext<UserContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 
+builder.Services.AddDbContext<ProductContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+    opts.EnableSensitiveDataLogging(true);
+});
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddDistributedMemoryCache();
@@ -74,7 +81,10 @@ app.MapPost(BASEURL, async (HttpContext httpContext, UserContext userContext) =>
 */
 
 var userContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<UserContext>();
-SeedData.SeedDatabase(userContext);
+SeedData.SeedDatabaseUser(userContext);
+
+var productContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<ProductContext>();
+SeedData.SeedDatabaseProduct(productContext);
 
 
 app.UseResponseCaching();

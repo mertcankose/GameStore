@@ -4,9 +4,7 @@ namespace GameStore.Models
 {
     public class SeedData
     {
-
-
-        public static void SeedDatabase(UserContext userContext)
+        public static void SeedDatabaseUser(UserContext userContext)
         {
             userContext.Database.Migrate();
 
@@ -26,9 +24,31 @@ namespace GameStore.Models
             userContext.SaveChanges();
         }
 
+        public static void SeedDatabaseProduct(ProductContext productContext)
+        {
+            productContext.Database.Migrate();
 
-
-
+            if (productContext.Products.Count() == 0)
+            {
+                productContext.Products.AddRange(
+                    new Product
+                    {
+                        Name = "Legend of Legends",
+                        Description = "Good Game",
+                        Image = "",
+                        Price = 500,
+                    },
+                                        new Product
+                                        {
+                                            Name = "Gta V",
+                                            Description = "Good Game2 ",
+                                            Image = "",
+                                            Price = 1000,
+                                        }
+                  );
+            }
+            productContext.SaveChanges();
+        }
 
     }
 }

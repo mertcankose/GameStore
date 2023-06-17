@@ -1,18 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GameStore.Models
 {
     public class SeedData
     {
-
-
-        public static void SeedDatabase(UserContext userContext)
+        public static void SeedDatabase(UserContext context)
         {
-            userContext.Database.Migrate();
+            context.Database.Migrate();
 
-            if (userContext.Users.Count() == 0)
+            // Existing User seeding code
+            if (context.Users.Count() == 0)
             {
-                userContext.Users.AddRange(
+                context.Users.AddRange(
                     new User
                     {
                         Username = "admin",
@@ -21,14 +22,42 @@ namespace GameStore.Models
                         FirstName = "Admin",
                         LastName = "Admin"
                     }
-                  );
+                );
+
+                context.SaveChanges();
             }
-            userContext.SaveChanges();
+
+            // New Game seeding code
+            if (context.Games.Count() == 0)
+            {
+                context.Games.AddRange(
+                    new Game
+                    {
+                        Title = "Super Mario Odyssey",
+                        Description = "Join Mario on a massive, globe-trotting 3D adventure.",
+                        ImageUrl = "https://via.placeholder.com/150",
+                        Price = 59.99m,
+                        Rating = 4 // Set the rating for the game
+                    },
+                    new Game
+                    {
+                        Title = "The Legend of Zelda: Breath of the Wild",
+                        Description = "Step into a world of discovery, exploration and adventure.",
+                        ImageUrl = "https://via.placeholder.com/150",
+                        Price = 59.99m,
+                        Rating = 5 // Set the rating for the game
+                    }
+                // Add more games with ratings as needed
+                );
+
+                context.SaveChanges();
+            }
+
         }
 
-
-
-
-
+        public static IEnumerable<Game> GetGames(UserContext context)
+        {
+            return context.Games.ToList();
+        }
     }
 }

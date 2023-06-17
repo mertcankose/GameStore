@@ -6,6 +6,7 @@ namespace GameStore.Models
     {
         public UserContext(DbContextOptions<UserContext> opts) : base(opts) { }
         public DbSet<User> Users => Set<User>();
+        public DbSet<Game> Games { get; set; }
 
     }
 }

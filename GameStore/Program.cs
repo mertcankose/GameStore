@@ -16,6 +16,7 @@ builder.Services.AddDbContext<UserContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 
+
 builder.Services.AddControllers();
 
 builder.Services.AddDistributedMemoryCache();

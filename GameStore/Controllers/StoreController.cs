@@ -93,21 +93,6 @@ namespace GameStore.Controllers
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Home(long id)
-        {
-            var cart = await cartContext.CartProducts.FindAsync(id);
-
-            if (cart != null)
-            {
-                cartContext.CartProducts.Remove(cart);
-                await cartContext.SaveChangesAsync();
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
-
-
 
         public IActionResult Store()
         {

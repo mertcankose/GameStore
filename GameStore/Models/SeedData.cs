@@ -6,7 +6,7 @@ namespace GameStore.Models
 {
     public class SeedData
     {
-        public static void SeedDatabaseUser(UserContext userContext)
+        public static void SeedDatabaseUser(UserContext context)
         {
             context.Database.Migrate();
 
@@ -22,32 +22,6 @@ namespace GameStore.Models
                         FirstName = "Admin",
                         LastName = "Admin"
                     }
-                );
-
-                context.SaveChanges();
-            }
-
-            // New Game seeding code
-            if (context.Games.Count() == 0)
-            {
-                context.Games.AddRange(
-                    new Game
-                    {
-                        Title = "Super Mario Odyssey",
-                        Description = "Join Mario on a massive, globe-trotting 3D adventure.",
-                        ImageUrl = "https://via.placeholder.com/150",
-                        Price = 59.99m,
-                        Rating = 4 // Set the rating for the game
-                    },
-                    new Game
-                    {
-                        Title = "The Legend of Zelda: Breath of the Wild",
-                        Description = "Step into a world of discovery, exploration and adventure.",
-                        ImageUrl = "https://via.placeholder.com/150",
-                        Price = 59.99m,
-                        Rating = 5 // Set the rating for the game
-                    }
-                // Add more games with ratings as needed
                 );
 
                 context.SaveChanges();
@@ -81,5 +55,24 @@ namespace GameStore.Models
             productContext.SaveChanges();
         }
 
+        public static void SeedDatabaseCart(CartContext cartContext)
+        {
+            cartContext.Database.Migrate();
+
+            if (cartContext.CartProducts.Count() == 0)
+            {
+                cartContext.CartProducts.AddRange(
+                    new Cart
+                    {
+                        Name = "Legend of Legends",
+                        Description = "Good Game",
+                        Image = "",
+                        Price = 500,
+                    }
+                  );
+            }
+            cartContext.SaveChanges();
+
+        }
     }
 }

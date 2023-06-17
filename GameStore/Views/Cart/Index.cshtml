@@ -1,0 +1,27 @@
+﻿@model GameStore.Models.Cart
+
+<h1>Cart</h1>
+
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Description</td>
+            <td>@Model.Image</td>
+            <td>@Model.Price</td>
+        </tr>
+    </table>
+}
+else
+{
+    <p>No products in the cart.</p>
+}

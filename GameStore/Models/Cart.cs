@@ -2,7 +2,11 @@
 {
     public class Cart
     {
-        public List<long> ProductIds { get; set; }
-        public List<Product> Products { get; set; }
+        public long Id { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Image { get; set; }
+        public float? Price { get; set; }
+
     }
 }

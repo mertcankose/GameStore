@@ -19,8 +19,7 @@ namespace GameStore.Controllers
 
         public IActionResult Index()
         {
-            var games = SeedData.GetGames(_userContext);
-            return View(games);
+            return View();
         }
 
 

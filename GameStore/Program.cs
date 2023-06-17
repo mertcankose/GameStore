@@ -22,6 +22,11 @@ builder.Services.AddDbContext<ProductContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 
+builder.Services.AddDbContext<CartContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration["ConnectionStrings:CartConnection"]);
+    opts.EnableSensitiveDataLogging(true);
+});
 
 builder.Services.AddControllers();
 
@@ -85,6 +90,9 @@ SeedData.SeedDatabaseUser(userContext);
 
 var productContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<ProductContext>();
 SeedData.SeedDatabaseProduct(productContext);
+
+var cartContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<CartContext>();
+SeedData.SeedDatabaseCart(cartContext);
 
 
 app.UseResponseCaching();

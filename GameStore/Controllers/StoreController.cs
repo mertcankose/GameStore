@@ -1,15 +1,16 @@
 ﻿using GameStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GameStore.Controllers
 {
     public class StoreController : Controller
     {
         public ProductContext productContext;
-        public Cart cartContext;
+        public CartContext cartContext;
 
-        public StoreController(ProductContext productContext)
+        public StoreController(ProductContext productContext, CartContext cartContext)
         {
             this.productContext = productContext;
             this.cartContext = cartContext;
@@ -60,22 +61,53 @@ namespace GameStore.Controllers
                 return View(product);
         }
 
-        public async Task<List<Product>> GetCartProducts(Cart cart)
+        [HttpPost]
+        public async Task<IActionResult> Index(Cart cart)
         {
-            List<Product> cartProducts = new List<Product>();
 
-            foreach (long productId in cart.ProductIds)
-            {
-                Product product = await productContext.Products.FindAsync(productId);
+            
+            //cartContext.CartProducts.Add(cart);
+            //await cartContext.SaveChangesAsync();
 
-                if (product != null)
+            //return View(cart);
+            
+            
+
+            
+            var cartProductExist = await cartContext.CartProducts.FirstOrDefaultAsync(u => u.Name == cart.Name);
+                if (cartProductExist == null)
                 {
-                    cartProducts.Add(product);
+                    cartContext.CartProducts.Add(cart);
+                    await cartContext.SaveChangesAsync();
+
+        
+                    return RedirectToAction(nameof(Index));
                 }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            
+
+            return View(cart);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Home(long id)
+        {
+            var cart = await cartContext.CartProducts.FindAsync(id);
+
+            if (cart != null)
+            {
+                cartContext.CartProducts.Remove(cart);
+                await cartContext.SaveChangesAsync();
             }
 
-            return cartProducts;
+            return RedirectToAction(nameof(Index));
         }
+
+
 
         public IActionResult Store()
         {
@@ -91,16 +123,6 @@ namespace GameStore.Controllers
         public IActionResult AddProduct()
         {
             return View();
-        }
-        public IActionResult Cart()
-        {
-            Cart cart = new Cart();
-            // Cart and product creation operations go here
-            // For example:
-            cart.ProductIds = new List<long>() { 1, 2, 3 };
-            cart.Products = GetCartProducts(cart).Result;
-
-            return View(cart);
         }
     }
 }

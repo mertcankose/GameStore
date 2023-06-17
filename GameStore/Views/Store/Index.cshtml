@@ -14,8 +14,11 @@
                     <h5 class="card-title">@Model.Name</h5>
                     <p class="card-text">@Model.Description</p>
                     <p class="card-text">Price: $@Model.Price</p>
-                    <form action="/Cart/AddToCart" method="post">
-                        <input type="hidden" name="productId" value="@Model.Id" />
+                    <form method="post" action="AddProductToCart">
+                        <input asp-for="Name" type="text" name="Name" value="@Model.Name" />
+                        <input asp-for="Description" type="text" name="Description" value="@Model.Description" />
+                        <input asp-for="Image" type="text" name="Image" value="@Model.Image" />
+                        <input asp-for="Price" type="text" name="Price" value="@Model.Price" />
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
                 </div>

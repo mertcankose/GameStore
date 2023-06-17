@@ -7,10 +7,12 @@ namespace GameStore.Controllers
     public class StoreController : Controller
     {
         public ProductContext productContext;
+        public Cart cartContext;
 
         public StoreController(ProductContext productContext)
         {
             this.productContext = productContext;
+            this.cartContext = cartContext;
         }
 
         public async Task<IActionResult> Index(long? id)
@@ -58,6 +60,22 @@ namespace GameStore.Controllers
                 return View(product);
         }
 
+        public async Task<List<Product>> GetCartProducts(Cart cart)
+        {
+            List<Product> cartProducts = new List<Product>();
+
+            foreach (long productId in cart.ProductIds)
+            {
+                Product product = await productContext.Products.FindAsync(productId);
+
+                if (product != null)
+                {
+                    cartProducts.Add(product);
+                }
+            }
+
+            return cartProducts;
+        }
 
         public IActionResult Store()
         {
@@ -73,6 +91,16 @@ namespace GameStore.Controllers
         public IActionResult AddProduct()
         {
             return View();
+        }
+        public IActionResult Cart()
+        {
+            Cart cart = new Cart();
+            // Cart and product creation operations go here
+            // For example:
+            cart.ProductIds = new List<long>() { 1, 2, 3 };
+            cart.Products = GetCartProducts(cart).Result;
+
+            return View(cart);
         }
     }
 }

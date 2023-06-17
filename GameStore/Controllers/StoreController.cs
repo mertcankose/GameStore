@@ -30,22 +30,32 @@ namespace GameStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product)
         {
-            if (ModelState.IsValid)
+            // only admin can add product
+            var currentUserEmail = HttpContext.Session.GetString("CurrentUserEmail");
+
+            if (currentUserEmail != "admin@admin.com")
             {
-                var productExist = await productContext.Products.FirstOrDefaultAsync(u => u.Name == product.Name);
-                if (productExist == null)
+                return RedirectToAction(nameof(Home));
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
-                    productContext.Products.Add(product);
-                    await productContext.SaveChangesAsync();
-                    // redirect login
-                    return RedirectToAction(nameof(Store));
-                }
-                else
-                {
-                    return RedirectToAction(nameof(AddProduct));
+                    var productExist = await productContext.Products.FirstOrDefaultAsync(u => u.Name == product.Name);
+                    if (productExist == null)
+                    {
+                        productContext.Products.Add(product);
+                        await productContext.SaveChangesAsync();
+                        // redirect login
+                        return RedirectToAction(nameof(Home));
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(AddProduct));
+                    }
                 }
             }
-            return View(product);
+                return View(product);
         }
 
 
@@ -60,6 +70,9 @@ namespace GameStore.Controllers
             return View(products);
         }
 
-
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
     }
 }

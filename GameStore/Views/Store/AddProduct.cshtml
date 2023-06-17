@@ -1,0 +1,29 @@
+﻿@model GameStore.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div class="container">
+    <h3 class="text-center">Add Product</h3>
+
+    <form method="post" action="AddProduct" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="Name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="Description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="text" class="form-control" id="image" name="Image">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="Price" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Add Product</button>
+    </form>
+</div>

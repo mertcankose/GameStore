@@ -65,16 +65,6 @@ namespace GameStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Cart cart)
         {
-
-            
-            //cartContext.CartProducts.Add(cart);
-            //await cartContext.SaveChangesAsync();
-
-            //return View(cart);
-            
-            
-
-            
             var cartProductExist = await cartContext.CartProducts.FirstOrDefaultAsync(u => u.Name == cart.Name);
                 if (cartProductExist == null)
                 {
@@ -88,8 +78,6 @@ namespace GameStore.Controllers
                 {
                     return RedirectToAction(nameof(Index));
                 }
-            
-
             return View(cart);
 
         }

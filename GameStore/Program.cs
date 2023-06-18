@@ -86,6 +86,7 @@ app.MapPost(BASEURL, async (HttpContext httpContext, UserContext userContext) =>
 
 */
 
+/*
 var userContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<UserContext>();
 SeedData.SeedDatabaseUser(userContext);
 
@@ -94,6 +95,7 @@ SeedData.SeedDatabaseProduct(productContext);
 
 var cartContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<CartContext>();
 SeedData.SeedDatabaseCart(cartContext);
+*/
 
 
 app.UseResponseCaching();

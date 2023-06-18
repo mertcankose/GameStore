@@ -27,36 +27,6 @@ namespace GameStore.Controllers
             }
         }
 
-
-        // AddProduct Post
-        /*
-        [HttpPost]
-        public async Task<IActionResult> AddProductToCart(Cart cart)
-        {
-            // only admin can add product
-
-                if (ModelState.IsValid)
-                {
-                    var cartProductExist = await cartContext.CartProducts.FirstOrDefaultAsync(u => u.Name == cart.Name);
-                    if (cartProductExist == null)
-                    {
-                        cartContext.CartProducts.Add(cart);
-                        await cartContext.SaveChangesAsync();
-                        // redirect login
-                        return RedirectToAction(nameof(Index));
-                    }
-                    else
-                    {
-                        return RedirectToAction(nameof(Index));
-                    }
-                }
-            
-            return View(cart);
-        }
-
-        */
-        //delete spesific product from cart
-
         [HttpPost]
         public async Task<IActionResult> Home(long id)
         {
@@ -82,10 +52,5 @@ namespace GameStore.Controllers
             var cartProducts = cartContext.CartProducts.ToList();
             return View(cartProducts);
         }
-
-   
-
-
-
     }
 }

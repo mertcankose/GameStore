@@ -1,32 +1,46 @@
-﻿@model GameStore.Models.User;
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="navbar-brand">Game Store</h1>
+        </div>
+    </header>
 
-@{
-    ViewData["Title"] = "Profile Page";
-}
+    <div class="container">
+        <h2 class="game-store-title">Profile</h2>
 
-<div class="text-center">
-   <h6 class="bg-primary text-white text-center m-2 p-2">Profile</h6>
-   <div class="m-2">
-        <table class="table table-sm table-striped table-bordered">
-                <tbody>
-                    <tr>
-                        <th>User Name</th>
-                        <td>@Model.Username</td>
-                    </tr>
-                    <tr>
-                        <th>First Name</th>
-                        <td>@Model.FirstName</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name</th>
-                        <td>@Model.LastName</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>@Model.Email</td>
-                    </tr>
-                </tbody>
-        
+        <table>
+            <tbody>
+                <tr>
+                    <th>User Name</th>
+                    <td>@Model.Username</td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td>@Model.LastName</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.Email</td>
+                </tr>
+            </tbody>
         </table>
-   </div>
-</div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Game Store. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

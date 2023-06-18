@@ -123,7 +123,77 @@ body {
 .footer {
     background: #222222;
     color: #FFFFFF;
-    padding: 20px 0;
+    padding: 10px 0; 
+    border-top: 3px solid #FCC10D;
+}
+
+
+    .footer p {
+        font-size: 14px;
+        color: #BFBFBF;
+        text-align: center;
+    }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    color: #FCC10D;
+}
+
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+/* Styles for form */
+.game-store-form {
+    background: #2C2C2C;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+    .game-store-form .form-control {
+        background: #333333;
+        border: none;
+        color: #FFFFFF;
+    }
+
+        .game-store-form .form-control:focus {
+            background: #444444;
+            box-shadow: 0 0 10px 0 rgba(252, 193, 13, 0.25);
+        }
+
+.game-store-form-btn {
+    background: #FCC10D;
+    color: #222222;
+    border: none;
+}
+
+    .game-store-form-btn:hover {
+        background: #e8b306;
+    }
+
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
     border-top: 3px solid #FCC10D;
 }
 
@@ -132,3 +202,493 @@ body {
         color: #BFBFBF;
         text-align: center;
     }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    color: #FCC10D;
+}
+
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+.store-home-product-card {
+    background: #2C2C2C;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 50px;
+}
+
+    .store-home-product-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0px 4px 20px rgba(252, 193, 13, 0.4);
+    }
+
+    .store-home-product-card img {
+        object-fit: cover;
+        height: 250px;
+        width: 100%;
+        border-bottom: 3px solid #FCC10D;
+    }
+
+    .store-home-product-card .card-body {
+        padding: 20px;
+    }
+
+    .store-home-product-card h5.card-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #FCC10D;
+    }
+
+    .store-home-product-card p.card-text {
+        font-size: 1.2em;
+        color: #BFBFBF;
+    }
+
+.price-text {
+    font-weight: bold;
+    color: #FCC10D;
+}
+
+.view-details-btn {
+    background: #FCC10D;
+    color: #222222;
+    border: none;
+}
+
+    .view-details-btn:hover {
+        background: #e8b306;
+    }
+
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-top: 3px solid #FCC10D;
+}
+
+    .footer p {
+        font-size: 14px;
+        color: #BFBFBF;
+        text-align: center;
+    }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    color: #FCC10D;
+}
+
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+.product-detail-card {
+    background: #2C2C2C;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 50px;
+}
+
+    .product-detail-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0px 4px 20px rgba(252, 193, 13, 0.4);
+    }
+
+    .product-detail-card img {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        border-bottom: 3px solid #FCC10D;
+    }
+
+    .product-detail-card .card-body {
+        padding: 20px;
+    }
+
+    .product-detail-card h5.card-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #FCC10D;
+    }
+
+    .product-detail-card p.card-text {
+        font-size: 1.2em;
+        color: #BFBFBF;
+    }
+
+    .product-detail-card .price-text {
+        font-weight: bold;
+        color: #FCC10D;
+    }
+
+.add-to-cart-btn {
+    background: #FCC10D;
+    color: #222222;
+    border: none;
+}
+
+    .add-to-cart-btn:hover {
+        background: #e8b306;
+    }
+
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-top: 3px solid #FCC10D;
+}
+
+    .footer p {
+        font-size: 14px;
+        color: #BFBFBF;
+        text-align: center;
+    }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    color: #FCC10D;
+}
+
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+.cart-card {
+    background: #2C2C2C;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 50px;
+}
+
+    .cart-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0px 4px 20px rgba(252, 193, 13, 0.4);
+    }
+
+    .cart-card img {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        border-bottom: 3px solid #FCC10D;
+    }
+
+    .cart-card .card-body {
+        padding: 20px;
+    }
+
+    .cart-card h5.card-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #FCC10D;
+    }
+
+    .cart-card p.card-text {
+        font-size: 1.2em;
+        color: #BFBFBF;
+    }
+
+    .cart-card .price-text {
+        font-weight: bold;
+        color: #FCC10D;
+    }
+
+.delete-product-btn {
+    background: #FCC10D;
+    color: #222222;
+    border: none;
+}
+
+    .delete-product-btn:hover {
+        background: #e8b306;
+    }
+
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-top: 3px solid #FCC10D;
+}
+
+    .footer p {
+        font-size: 14px;
+        color: #BFBFBF;
+        text-align: center;
+    }
+.cart-container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+    .cart-container .cart-card {
+        background: #2C2C2C;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+    }
+
+        .cart-container .cart-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 4px 15px rgba(252, 193, 13, 0.4);
+        }
+
+        .cart-container .cart-card img {
+            object-fit: cover;
+            height: 200px;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .cart-container .cart-card .card-body {
+            padding: 15px;
+        }
+
+        .cart-container .cart-card h5.card-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #FCC10D;
+        }
+
+        .cart-container .cart-card p.card-text {
+            font-size: 1em;
+            color: #BFBFBF;
+        }
+
+        .cart-container .cart-card .price-text {
+            font-weight: bold;
+            color: #FCC10D;
+        }
+
+    .cart-container .delete-product-btn {
+        background: #FCC10D;
+        color: #222222;
+        border: none;
+        padding: 5px 10px;
+    }
+
+        .cart-container .delete-product-btn:hover {
+            background: #e8b306;
+        }
+
+/* Rest of the CSS code */
+/* Global Styles */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    color: #FCC10D;
+}
+
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+/* Cart Page Styles */
+
+.cart-card {
+    background: #2C2C2C;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+    .cart-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0px 4px 15px rgba(252, 193, 13, 0.4);
+    }
+
+    .cart-card img {
+        object-fit: cover;
+        height: 150px;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .cart-card .card-body {
+        padding: 15px;
+    }
+
+    .cart-card h5.card-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #FCC10D;
+    }
+
+    .cart-card p.card-text {
+        font-size: 1em;
+        color: #BFBFBF;
+    }
+
+    .cart-card .price-text {
+        font-weight: bold;
+        color: #FCC10D;
+    }
+
+.delete-product-btn {
+    background: #FCC10D;
+    color: #222222;
+    border: none;
+    padding: 5px 10px;
+}
+
+    .delete-product-btn:hover {
+        background: #e8b306;
+    }
+
+/* Footer Styles */
+
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-top: 3px solid #FCC10D;
+}
+
+    .footer p {
+        font-size: 14px;
+        color: #BFBFBF;
+        text-align: center;
+    }
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222222;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 50px;
+    color: #E0E0E0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #222222;
+    border-bottom: 3px solid #FCC10D;
+    padding: 20px 0;
+}
+
+    .navbar .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar .navbar-brand {
+        font-size: 2em;
+        color: #FCC10D;
+        margin: 0;
+    }
+
+/* Game Store Title Styles */
+.game-store-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #FCC10D;
+    padding: 5% 0;
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table th, table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+/* Footer Styles */
+.footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border-top: 3px solid #FCC10D;
+    text-align: center;
+    font-size: 14px;
+}

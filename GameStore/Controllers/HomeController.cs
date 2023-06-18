@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GameStore.Controllers
 {
@@ -10,28 +11,26 @@ namespace GameStore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserContext _userContext;
-        private readonly ProductContext _context;
+        private readonly ProductContext _productContext;
 
-        public HomeController(ILogger<HomeController> logger, UserContext userContext, ProductContext context)
+        public HomeController(ILogger<HomeController> logger, UserContext userContext, ProductContext productContext)
         {
-            _logger = logger;
-            _userContext = userContext;
-            _context = context;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _userContext = userContext ?? throw new ArgumentNullException(nameof(userContext));
+            _productContext = productContext ?? throw new ArgumentNullException(nameof(productContext));
         }
 
-        public IActionResult Index(string searchString)
+        public async Task<IActionResult> Index(string searchString)
         {
-            var products = _context.Products.AsQueryable();
+            var products = _productContext.Products.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 products = products.Where(p => p.Name.Contains(searchString));
             }
 
-            return View(products.ToList());
+            return View(await products.ToListAsync());
         }
-
-
 
         public IActionResult Privacy()
         {

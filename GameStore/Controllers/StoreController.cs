@@ -16,6 +16,7 @@ namespace GameStore.Controllers
             this.cartContext = cartContext;
         }
 
+
         public async Task<IActionResult> Index(long? id)
         {
             if (id != null)

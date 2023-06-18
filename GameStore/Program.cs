@@ -41,6 +41,7 @@ builder.Services.AddSession(options =>
 
 
 var app = builder.Build();
+app.UseStaticFiles();
 
 app.MapControllers();
 

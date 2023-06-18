@@ -5,120 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/styles.css">
+    <style>
+        /* Custom styles for Game Store */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #141618;
+            color: #FFFFFF;
+        }
+
+        .game-store-header {
+            background: #18191A;
+            padding: 50px 0;
+        }
+
+        .game-store-title {
+            font-size: 60px;
+            font-weight: 600;
+            color: #FCC10D;
+        }
+
+        .game-store-subtitle {
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .game-store-product-card {
+            background: #202123;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+            .game-store-product-card:hover {
+                transform: scale(1.03);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .game-store-product-card img {
+                object-fit: cover;
+                height: 300px;
+                width: 100%;
+            }
+
+            .game-store-product-card .card-body {
+                padding: 20px;
+            }
+
+            .game-store-product-card h5.card-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+                color: #FCC10D;
+            }
+
+            .game-store-product-card p.card-text {
+                font-size: 16px;
+                color: #BFBFBF;
+            }
+
+        .footer {
+            background: #18191A;
+            color: #FFFFFF;
+            padding: 20px 0;
+        }
+
+            .footer p {
+                font-size: 14px;
+                color: #BFBFBF;
+            }
+    </style>
 </head>
 <body>
     <header class="text-center game-store-header">
-        <h1 class="display-4 game-store-title">Game Store</h1>
+        <h1 class="game-store-title">Game Store</h1>
         <p class="game-store-subtitle">Explore our range of gaming accessories</p>
     </header>
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="position-relative">
-                    <input id="search-input" class="form-control mb-4 search-input" type="text" placeholder="Search" aria-label="Search">
-                    <div class="search-suggestions"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row" id="card-container"></div>
-        <div class="row">
-            <div class="col-12">
-                <nav>
-                    <ul class="pagination justify-content-center" id="pagination"></ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <footer class="py-3 footer">
-        <p class="text-center">©Game Store</p>
-    </footer>
-    <div class="shopping-cart" id="shopping-cart">
-        <img src="~/icons/ans.svg" alt="Cart Icon">
-        <div class="cart-item-count" id="cart-item-count">0</div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            const cardContainer = $('#card-container');
-            const cartItemCount = $('#cart-item-count');
-            const searchInput = $('#search-input');
-            const searchSuggestions = $('.search-suggestions');
-            const pagination = $('#pagination');
-            const itemsPerPage = 7;
-            let currentPage = 1;
-            let cartItems = 0;
-            let cards = @Html.Raw(Json.Serialize(Model));
-
-            function generateCard(card) {
-                const ratingStars = '★'.repeat(card.rating) + '☆'.repeat(5 - card.rating); // Added rating as stars
-                const cardElement = $(`
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="${card.imageUrl}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">${card.title}</h5>
-                                <p class="card-text">Rating: ${ratingStars}</p> <!-- Display rating as stars -->
-                                <p class="card-text">${card.price}</p>
-                                <button type="button" class="btn btn-primary add-to-cart-btn">Add to Cart</button>
-                            </div>
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card game-store-product-card">
+                        <img class="card-img-top" src="@product.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">@product.Description</p>
                         </div>
-                    </div>`);
-
-                return cardElement;
+                    </div>
+                </div>
             }
-
-            function renderCards(cards) {
-                cardContainer.empty();
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const paginatedCards = cards.slice(startIndex, endIndex);
-                paginatedCards.forEach(function (card) {
-                    const cardElement = generateCard(card);
-                    cardContainer.append(cardElement);
-                });
-            }
-
-            function updatePagination(totalItems) {
-                const totalPages = Math.ceil(totalItems / itemsPerPage);
-                pagination.empty();
-                for (let i = 1; i <= totalPages; i++) {
-                    const pageItem = $(`<li class="page-item"><a class="page-link" href="#">${i}</a></li>`);
-                    if (i === currentPage) {
-                        pageItem.addClass('active');
-                    }
-                    pageItem.on('click', function (e) {
-                        e.preventDefault();
-                        currentPage = i;
-                        renderCards(cards);
-                        updatePagination(totalItems);
-                    });
-                    pagination.append(pageItem);
-                }
-            }
-
-            function searchCards(searchValue) {
-                const filteredCards = cards.filter(function (card) {
-                    return card.title.toLowerCase().includes(searchValue.toLowerCase());
-                });
-                renderCards(filteredCards);
-                updatePagination(filteredCards.length);
-            }
-
-            searchInput.on('input', function () {
-                const searchValue = $(this).val().trim();
-                searchCards(searchValue);
-            });
-
-            cardContainer.on('click', '.add-to-cart-btn', function () {
-                cartItems++;
-                cartItemCount.text(cartItems);
-            });
-
-            renderCards(cards);
-            updatePagination(cards.length);
-        });
-    </script>
-    <script src="~/js/scripts.js"></script>
+        </div>
+    </div>
+    <footer class="footer">
+        <p class="text-center">©Game Store 2023</p>
+    </footer>
 </body>
 </html>

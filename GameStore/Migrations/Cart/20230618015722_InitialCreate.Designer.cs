@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameStore.Migrations.Cart
 {
     [DbContext(typeof(CartContext))]
-    [Migration("20230617230947_Initial")]
-    partial class Initial
+    [Migration("20230618015722_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

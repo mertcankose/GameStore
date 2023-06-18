@@ -10,18 +10,24 @@ namespace GameStore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserContext _userContext;
+        private readonly ProductContext _context;
 
-        public HomeController(ILogger<HomeController> logger, UserContext userContext)
+        public HomeController(ILogger<HomeController> logger, UserContext userContext, ProductContext context)
         {
             _logger = logger;
             _userContext = userContext;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
 
+            var products = _context.Products.ToList();
+            return View(products);
+
+            return View();
+
+        }
 
         public IActionResult Privacy()
         {

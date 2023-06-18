@@ -2,14 +2,14 @@
 
 #nullable disable
 
-namespace GameStore.Migrations.Cart
+namespace GameStore.Migrations.Product
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CartProducts",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -21,14 +21,14 @@ namespace GameStore.Migrations.Cart
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartProducts", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CartProducts");
+                name: "Products");
         }
     }
 }

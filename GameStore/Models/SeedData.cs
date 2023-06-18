@@ -31,7 +31,7 @@ namespace GameStore.Models
 
         public static void SeedDatabaseProduct(ProductContext productContext)
         {
-            productContext.Database.Migrate();
+           
 
             if (productContext.Products.Count() == 0)
             {
